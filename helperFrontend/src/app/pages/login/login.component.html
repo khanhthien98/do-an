@@ -1,0 +1,86 @@
+<!-- <section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Đăng nhập</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Tài khoản<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Đăng nhập</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="login m-5">
+    <div class="container">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="row">
+            <div class="col-md-6 login-do1 animated wow fadeInLeft" data-wow-delay=".5s">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập tên tài khoản!">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input formControlName="userName" placeholder="Tên đăng nhập" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập mật khẩu!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+
+            </div>
+            <div class="col-md-6 login-do animated wow fadeInRight" data-wow-delay=".5s">
+                <label class="hvr-sweep-to-top login-sub">
+                    <input type="hidden" value="login" name="command">
+                    <input type="submit" value="Đăng nhập">
+                </label>
+                <p>Bạn chưa có tài khoản ?</p>
+                <a href="/signup" class="hvr-sweep-to-top">Đăng ký</a>
+            </div>
+
+            <div class="clearfix"> </div>
+        </form>
+
+    </div>
+</div> -->
+
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <div class="form-content box-border">
+        Tên đăng nhập
+        <nz-form-item style="margin-top: 5px;">
+            <nz-form-control nzErrorTip="Vui lòng điền tên đăng nhập!">
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="userName" placeholder="Tên đăng nhập" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        Mật khẩu
+        <nz-form-item style="margin-top: 5px;">
+            <nz-form-control nzErrorTip="Vui lòng điền mật khẩu!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div nz-row class="login-form-margin">
+            <div nz-col [nzSpan]="12">
+                <label nz-checkbox formControlName="remember">
+                    <span>Lưu tài khoản</span>
+                </label>
+            </div>
+            <div nz-col [nzSpan]="12">
+                <a class="login-form-forgot forgot-pass">Quên mật khẩu</a>
+            </div>
+        </div>
+        <button type="submit" nz-button class="login-form-button login-form-margin" style="background-color: #52c41a; color: white;">
+            Đăng nhập
+        </button>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+            <a href="/signup">Đăng ký</a>
+        </button>
+    </div>
+</form>

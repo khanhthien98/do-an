@@ -1,0 +1,146 @@
+<form nz-form [formGroup]="searchForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>Mã bill</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="Mã bill" formControlName="billID" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>Tên khách hàng</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="Tên khách hàng" formControlName="userName" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>Đơn giá từ</nz-form-label>
+                <nz-form-control>
+                    <nz-input-number class="w-100" formControlName="priceFrom" [nzMin]="0" [nzStep]="100000">
+                    </nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>Đơn giá đến</nz-form-label>
+                <nz-form-control>
+                    <nz-input-number class="w-100" formControlName="priceTo" [nzMin]="0" [nzStep]="100000">
+                    </nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>Từ ngày</nz-form-label>
+                <nz-form-control>
+                    <nz-date-picker class="w-100" formControlName="fromDate"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>Đến ngày</nz-form-label>
+                <nz-form-control>
+                    <nz-date-picker class="w-100" formControlName="toDate"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button (click)="exportExcel()" class="btn-green"><i nz-icon nzType="file-excel" nzTheme="outline"></i> Xuất
+                Excel</button>
+            <button nz-button (click)="search()" [nzType]="'primary'">Search</button>
+            <button nz-button (click)="resetForm()">Clear</button>
+        </div>
+    </div>
+</form>
+<div>
+    <nz-table nzShowSizeChanger [nzData]="listOfData" [nzFrontPagination]="false" [nzLoading]="loading"
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex"
+        (nzQueryParams)="onQueryParamsChange($event)">
+        <thead>
+            <tr>
+                <!-- <th style="text-align: center;">STT</th> -->
+                <th nzColumnKey="billID" [nzSortFn]="true" style="text-align: center;">Mã Bill</th>
+                <th style="text-align: center;" width="100px">Tên</th>
+                <th nzColumnKey="total" [nzSortFn]="true" style="text-align: center;" width="150px">Tổng hóa đơn</th>
+                <th style="text-align: center;" width="120px">Thanh toán</th>
+                <th nzColumnKey="date" [nzSortFn]="true" style="text-align: center;">Ngày bán</th>
+                <th style="text-align: center;">Địa chỉ</th>
+                <th style="text-align: center;">Khách hàng</th>
+                <th style="text-align: center;">Tình trạng</th>
+                <th style="text-align: center;" width="120px">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of listOfData; ; let i = index">
+                <!-- <td>{{i+1}}</td> -->
+                <td>{{data.billID}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.total| number}}</td>
+                <td>{{data.payment}}</td>
+                <td>{{data.date|date:'dd/MM/yyyy'}}</td>
+                <td>{{data.address}}</td>
+                <td>{{data.user.userName}}</td>
+                <td>
+                    <nz-select *ngIf=" data.status != 'Cancel'; else elseBlock" ngModel="{{data.status}}"
+                        (ngModelChange)="changeStatus($event,data)">
+                        <nz-option nzValue="Process" nzLabel="Đang xử lý"></nz-option>
+                        <nz-option nzValue="Delivery" nzLabel="Đang giao hàng"></nz-option>
+                        <nz-option nzValue="Delivered" nzLabel="Đã giao hàng"></nz-option>
+                    </nz-select>
+                    <ng-template #elseBlock><p class="red">Đơn hàng đã hủy</p> </ng-template>
+                </td>
+                <td>
+                    <button (click)="showModal(data.billID)" nz-button style="border: none;"><i nz-icon nzType="eye" nzTheme="twotone" ></i></button>
+                    <button  *ngIf=" data.status != 'Cancel'" (click)="cancelBill(data)" nz-button style="border: none;"><i nz-icon nzType="close-circle" nzTheme="twotone" nzTwotoneColor="#eb2f96"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+
+<nz-modal [nzStyle]="{ top: '20px',width:'100%' }" [(nzVisible)]="isVisible" nzTitle="Xem chi tiết">
+    <ng-container *nzModalContent>
+        <div class="m-container">
+            <div>
+                <h2>Mã đơn: </h2>
+                <h2>{{this.billId}}</h2>
+            </div>
+            <nz-divider nzPlain nzText="Chi tiết"></nz-divider>
+            <nz-table nzTemplateMode>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">STT</th>
+                        <th style="text-align: center;">Mã sản phẩm</th>
+                        <th style="text-align: center;">Tên sản phẩm</th>
+                        <th style="text-align: center;">Giá</th>
+                        <th style="text-align: center;">Số lượng</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of listOfBillDetail; ; let i = index">
+                        <td style="text-align: center;">{{i+1}}</td>
+                        <td style="text-align: center;">{{data?.product?.productID}}</td>
+                        <td style="text-align: center;">{{data?.product?.productName}}</td>
+                        <td style="text-align: center;">{{data.price| number}}</td>
+                        <td style="text-align: center;">{{data.quantity}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+
+    </ng-container>
+    <div *nzModalFooter>
+        <button nz-button nzType="default" (click)="handlePrint()"><i nz-icon nzType="printer"
+                nzTheme="outline"></i>&nbsp;In hóa đơn</button>
+        <button nz-button nzType="primary" (click)="handleOk()">OK</button>
+    </div>
+</nz-modal>

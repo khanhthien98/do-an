@@ -1,0 +1,29 @@
+.login-form {
+    padding-top: 230px;
+    background-image: url(https://swall.teahub.io/photos/small/206-2064041_free-simple-wallpaper-backgrounds-for-your-desktop-simple.jpg);
+    background-size: cover;
+    height: 110%!important;
+}
+
+.form-content {
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    background-color: aliceblue;
+}
+
+.login-form-margin {
+    margin-bottom: 16px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+.forgot-pass:hover{
+    color: #1890ff!important;
+}

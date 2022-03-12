@@ -1,0 +1,57 @@
+<!-- <section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Thanh toán</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Thanh toán</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<div class="login" style="margin-top: 150px">
+    <div class="container">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="row">
+            <div class="col-md-6 login-do1 animated wow fadeInLeft" data-wow-delay=".5s">
+                <nz-form-label>Họ tên</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập tên!">
+                        <input type="text" nz-input formControlName="userName" placeholder="Tên" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-label>Số điện thoại</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập số điện thoại!">
+                        <input type="text" nz-input formControlName="phone" placeholder="Số điện thoại" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label>Phương thức thanh toán</nz-form-label>
+                    <nz-select formControlName="payment">
+                        <nz-option nzValue="Live" nzLabel="Trực tiếp"></nz-option>
+                        <nz-option nzValue="Bank transfer" nzLabel="Chuyển khoản"></nz-option>
+                    </nz-select>
+                </nz-form-item>
+                <nz-form-label>Địa chỉ giao hàng</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập địa chỉ!">
+                        <input disabled="true" type="text" nz-input formControlName="address"
+                            placeholder="Địa chỉ giao hàng" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="col-md-6 login-do animated wow fadeInRight" data-wow-delay=".5s" style="margin-top: 30px;">
+                <label class="hvr-sweep-to-top login-sub">
+                    <input type="hidden" value="insert" name="command">
+                    <input type="submit" value="Xác nhận thanh toán">
+                </label>
+            </div>
+            <div class="clearfix"> </div>
+        </form>
+    </div>
+
+
+</div>

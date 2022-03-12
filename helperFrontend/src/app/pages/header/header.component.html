@@ -1,0 +1,67 @@
+<header class="header_area sticky-header">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light main_box">
+            <div class="container">
+                <a href="/home" class="navbar-brand logo_h">Khánh Thiện Computer</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="/home" style="color: #e80000;">Trang chủ</a></li>
+                        <li class="nav-item submenu dropdown">
+                            <a href="/products" class="nav-link dropdown-toggle">Sản phẩm</a>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let item of listOfCategory" class="nav-item"><a
+                                        href="/products/{{item.categoryID}}" class="nav-link">{{item.categoryName}}</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="/contact">Liên hệ</a></li>
+
+                        <li *ngIf="!userName" class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Tài khoản</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a href="/login" class="nav-link">Đăng nhập</a></li>
+                                <li class="nav-item"><a href="/signup" class="nav-link">Đăng ký</a></li>
+                            </ul>
+                        </li>
+
+                        <li *ngIf="userName" class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">{{userName}}</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a href="/myorder" class="nav-link">Theo dõi đơn hàng</a></li>
+                                <li (click)="logout()" class="nav-item"><a class="nav-link">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="/mycart" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+
+                            </a></li>
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form name="frmSearch" action="/Demo/search" method="post" class="form-inline my-2 my-lg-0">
+                                <input name="txt" class="form-control mr-sm-2" type="text" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" style="background-color: #28d500;"
+                                    type="submit" onclick="checkValidKeyword(this.form)"><i style="color: #ffffff;"
+                                        class="fas fa-search"></i></button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</header>

@@ -1,0 +1,148 @@
+<!-- <section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Đăng ký</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Tài khoản<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Đăng ký</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="login">
+    <div class="container">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="row">
+            <div class="col-md-6 login-do1 animated wow fadeInLeft" data-wow-delay=".5s">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập tên tài khoản!">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input  type="text" nz-input formControlName="userName" placeholder="Tên đăng nhập" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <span  class="text-danger">{{msg2}}</span>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập email!">
+                        <input type="text" nz-input formControlName="email" placeholder="Email" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập số điện thoại!">
+                        <input type="number" nz-input formControlName="phone" placeholder="Số điện thoại" />
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập mật khẩu!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập mật khẩu!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input (keyup)="validPass($event)" type="password" nz-input formControlName="clonePassword"
+                                placeholder=" Xác nhận mật khẩu" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <span  class="text-danger">{{msg1}}</span>
+                <div class="login-mail" href="#">
+                    <label  class="checkbox1"><input (click)="confirm = !confirm" type="checkbox" name="checkbox"><i>
+                        </i>Tôi đồng ý với các điều khoản.</label>
+                    <span class="text-danger">{{msg}}</span>
+                    <fieldset disabled>
+
+                        <label for="disabledTextInput">Điều khoản tại website GearGaming</label>
+                        <textarea type="text" id="disabledTextInput" class="form-control"
+                            placeholder="">* Mua hàng tại Khánh Thiện Computer sẽ không được đổi trả khi sản phẩm bị hư hỏng do bạn làm rơi.* Bạn hãy chắc địa chỉ bạn gửi là đúng.* Sau 3 ngày không chuyển khoản, đơn hàng sẽ xóa.</textarea>
+                    </fieldset>
+                </div>
+
+            </div>
+            <div class="col-md-6 login-do animated wow fadeInRight" data-wow-delay=".5s">
+                <label class="hvr-sweep-to-top login-sub">
+                    <input type="hidden" value="insert" name="command">
+                    <input type="submit" value="Đăng Ký">
+                </label>
+
+                <p>Bạn đã có tài khoản ?</p>
+                <a href="/login" class="hvr-sweep-to-top">Đăng Nhập</a>
+            </div>
+            <div class="clearfix"> </div>
+        </form>
+    </div>
+
+
+</div> -->
+
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <div class="form-content box-border">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Nhập tên tài khoản!">
+                <nz-input-group nzPrefixIcon="user">
+                    <input  type="text" nz-input formControlName="userName" placeholder="Tên đăng nhập" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <span  class="text-danger">{{msg2}}</span>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Nhập email!">
+                <input type="text" nz-input formControlName="email" placeholder="Email" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Nhập số điện thoại!">
+                <input type="number" nz-input formControlName="phone" placeholder="Số điện thoại" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Nhập mật khẩu!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Nhập mật khẩu!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input (keyup)="validPass($event)" type="password" nz-input formControlName="clonePassword"
+                        placeholder=" Xác nhận mật khẩu" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <span  class="text-danger">{{msg1}}</span>
+        <div class="login-mail" href="#">
+            <label  class="checkbox1"><input (click)="confirm = !confirm" type="checkbox" name="checkbox"><i>
+                </i>Tôi đồng ý với các <a (click)="showModal()"><u  style="color: #1890ff;">điều khoản</u></a></label>
+            <!-- <span class="text-danger">{{msg}}</span>
+            <fieldset disabled>
+
+                <label for="disabledTextInput">Điều khoản tại website GearGaming</label>
+                <textarea type="text" id="disabledTextInput" class="form-control"
+                    placeholder="">* Mua hàng tại Khánh Thiện Computer sẽ không được đổi trả khi sản phẩm bị hư hỏng do bạn làm rơi.* Bạn hãy chắc địa chỉ bạn gửi là đúng.* Sau 3 ngày không chuyển khoản, đơn hàng sẽ xóa.</textarea>
+            </fieldset> -->
+        </div>
+        <button type="submit" nz-button class="login-form-button login-form-margin" style="background-color: #52c41a; color: white;">
+            Đăng ký
+        </button>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+            <a href="/login">Đăng nhập</a>
+        </button>
+    </div>
+
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Điều khoản tại Khánh Thiện Computer" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+          <p>Không hoàn trả sản phẩm do bạn làm hỏng</p>
+          <p>Vui lòng ghi chính xác địa chỉ chuyển hàng</p>
+          <p>Đơn hàng sẽ huỷ nếu sau 3 ngày bạn không thanh toán</p>
+        </ng-container>
+      </nz-modal>
+</form>

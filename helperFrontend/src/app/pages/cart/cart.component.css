@@ -1,0 +1,22 @@
+.icon-del {
+  font-size: 20px;
+  cursor: pointer;
+}
+.btn-cash{
+  color: #fff;
+  background: #FF7000;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  display: inline-block;
+  margin-top: 1em;
+}
+
+.t-head-cart{
+  background: #828bb3!important;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  margin: auto;
+  width: 25%; 
+}
